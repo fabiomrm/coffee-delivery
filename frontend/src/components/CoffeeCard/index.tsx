@@ -1,5 +1,6 @@
 import { ShoppingCart } from "phosphor-react";
 import { Coffee } from "../../data/coffees";
+import { currencyFormatter } from "../../utils/currencyFormatter";
 import { AmountInput } from "../AmountInput";
 import { RegularText, TitleText } from "../Typograhy";
 import { CoffeeCardContainer, Description, Name, Tags, CardFooter, AddCartWrapper } from "./styles";
@@ -25,7 +26,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
       <CardFooter>
         <div>
           <RegularText size="s">R$</RegularText>
-          <TitleText size="m" color="text" as="strong">{coffee.price}</TitleText>
+          <TitleText size="m" color="text" as="strong">{currencyFormatter(coffee.price)}</TitleText>
         </div>
         <AddCartWrapper>
           <AmountInput />
