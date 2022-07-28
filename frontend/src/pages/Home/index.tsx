@@ -1,5 +1,10 @@
+import { Landing } from "./components/Landing";
+import { HomeContainer } from "./styles";
+
 export function Home() {
   return (
-    <h1>oi</h1>
+    <HomeContainer>
+      <Landing />
+    </HomeContainer>
   )
 }
