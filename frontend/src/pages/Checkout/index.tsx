@@ -1,5 +1,10 @@
+import { CompleteOrderForm } from "./CompleteOrderForm";
+import { CheckoutContainer } from "./styles";
+
 export function Checkout() {
   return (
-    <h1>Checkout</h1>
+    <CheckoutContainer className="container">
+      <CompleteOrderForm />
+    </CheckoutContainer>
   )
 }
