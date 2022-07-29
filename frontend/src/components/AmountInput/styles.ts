@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const AmountInputContainer = styled.div`
+interface AmountInputContainerProps {
+  size?: 'medium' | 'small'
+}
+
+export const AmountInputContainer = styled.div<AmountInputContainerProps>`
   flex: 1;
   background: ${({ theme }) => theme.colors["base-button"]};
   display: flex;
@@ -9,7 +13,7 @@ export const AmountInputContainer = styled.div`
   gap: 4px;
   border-radius: 6px;
 
-  padding: 0.5rem;
+ 
 
   input {
     text-align: center;
@@ -21,6 +25,14 @@ export const AmountInputContainer = styled.div`
     &:focus {
       outline: none;
     }
+
+    ${({ size }) => size === 'medium' && css`
+    padding: 0.5rem;
+    `}
+
+    ${({ size }) => size === 'small' && css`
+    padding: 0.3rem 0.5rem;
+    `}
   }
 `
 

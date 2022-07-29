@@ -1,4 +1,5 @@
-import { RegularText } from "../../../components/Typograhy";
+
+import { RegularText } from "../../../../components/Typograhy";
 import { SectionTitleContainer } from "./styles";
 
 interface SectionTitleProps {

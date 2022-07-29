@@ -1,7 +1,7 @@
 import { MapPinLine, CurrencyDollar } from "phosphor-react";
 import { useTheme } from "styled-components";
 import { TitleText } from "../../../components/Typograhy";
-import { SectionTitle } from "../SectionTitle";
+import { SectionTitle } from "./SectionTitle";
 import { FormSectionContainer } from "../styles";
 import { AddressForm } from "./AddressForm";
 import { PaymentMethodOptions } from "./PaymentMethodOptions";
