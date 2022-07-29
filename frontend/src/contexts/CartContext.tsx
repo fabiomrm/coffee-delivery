@@ -19,24 +19,25 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
 
-  function addCoffee(coffee: CartItem) {
-    const coffeeAlreadyExists = cartItems.findIndex((cartItem) => cartItem.id === coffee.id);
 
-    if (coffeeAlreadyExists < 0) {
-      const newCartItem: CartItem = {
-        ...coffee,
-        quantity: 1
-      }
-      setCartItems((prev) => [...prev, newCartItem]);
-      return;
-    }
+
+  function addCoffee(coffee: CartItem) {
     const currentCart = [...cartItems]
-    currentCart[coffeeAlreadyExists].quantity += coffee.quantity;
-    setCartItems(currentCart)
+    const coffeeInCart = currentCart.findIndex(c => c.id === coffee.id)
+    if (coffeeInCart < 0) {
+      const updatedCart = [...currentCart, coffee];
+      setCartItems(updatedCart)
+    } else {
+      const coffeeToUpdateQuantity = currentCart[coffeeInCart]
+      const updatedCoffee = { ...coffeeToUpdateQuantity, quantity: coffee.quantity }
+      let cart = [...cartItems]
+      cart[coffeeInCart] = updatedCoffee;
+      setCartItems(cart);
+    }
   }
 
-  console.log(cartItems)
 
+  console.log(cartItems)
 
 
   return (

@@ -30,8 +30,6 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
       ...coffee,
       quantity: coffeeQuantity,
     }
-    console.log(coffeeToAdd)
-
     addCoffee(coffeeToAdd)
   }
 

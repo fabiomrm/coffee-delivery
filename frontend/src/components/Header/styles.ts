@@ -15,6 +15,22 @@ export const HeaderContainer = styled.header`
   }
 `
 
+export const SizeWrapper = styled.div`
+  position: absolute;
+  top: calc(-1.25rem/2);
+  right: calc(-1.25rem/2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors["brand-yellow-dark"]};
+  color: ${({ theme }) => theme.colors["brand-yellow-light"]}
+
+`
+
 export const HeaderButtonsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -40,6 +56,5 @@ export const HeaderButton = styled.button<HeaderButtonProps>`
     background: ${theme.colors[`brand-${variant}-light`]};
     color: ${theme.colors[`brand-${variant}-dark`]}
   `}
-
 
 ` 

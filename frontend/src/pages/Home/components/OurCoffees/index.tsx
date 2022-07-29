@@ -12,7 +12,6 @@ export function OurCoffees() {
       <TitleText size="l" color="subtitle">Nossos cafés</TitleText>
       <CoffeeList>
         {coffees.map((coffee) => (
-
           <CoffeeCard coffee={coffee} key={coffee.id} />
         ))}
       </CoffeeList>
