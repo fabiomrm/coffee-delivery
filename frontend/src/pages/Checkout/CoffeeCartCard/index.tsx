@@ -13,22 +13,31 @@ interface CoffeeCartCardProps {
 
 export function CoffeeCartCard({ cartItem }: CoffeeCartCardProps) {
 
-  const { cartItems, addCoffee } = useCart()
+  const { cartItems, addCoffee, deleteCoffee } = useCart()
   const [quantity, setQuantity] = useState(cartItem.quantity)
 
   function handleIncreaseQuantity(id: number) {
-
     const cartItem = cartItems.find((c) => c.id === id)
     if (cartItem) {
-      const updatedCartQuantity = { ...cartItem, quantity: quantity }
+      const updatedCartQuantity = { ...cartItem, quantity: quantity + 1 }
       addCoffee(updatedCartQuantity);
+      setQuantity((prev) => prev + 1)
     }
   }
 
   function handleDecreaseQuantity(id: number) {
-
+    const cartItem = cartItems.find((c) => c.id === id)
+    if (cartItem) {
+      const updatedCartQuantity = { ...cartItem, quantity: quantity - 1 }
+      addCoffee(updatedCartQuantity);
+      setQuantity((prev) => prev - 1)
+    }
   }
-  console.log(cartItem.price * cartItem.quantity)
+
+  function handleRemoveCartItem(id: number) {
+    deleteCoffee(id)
+  }
+
   return (
     <CoffeeCartCardContainer>
       <div>
@@ -37,7 +46,7 @@ export function CoffeeCartCard({ cartItem }: CoffeeCartCardProps) {
           <RegularText color="subtitle">{cartItem.name}</RegularText>
           <ActionsContainer>
             <AmountInput size="small" onIncrease={() => handleIncreaseQuantity(cartItem.id)} onDecrease={() => handleDecreaseQuantity(cartItem.id)} quantity={cartItem.quantity} />
-            <RemoveButton>
+            <RemoveButton onClick={() => handleRemoveCartItem(cartItem.id)}>
               <Trash size={16} />
               REMOVER
             </RemoveButton>

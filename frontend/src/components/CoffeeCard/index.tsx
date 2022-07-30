@@ -14,7 +14,7 @@ interface CoffeeCardProps {
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
 
   const { addCoffee } = useCart();
-  const [coffeeQuantity, setCoffeeQuantity] = useState(0);
+  const [coffeeQuantity, setCoffeeQuantity] = useState(1);
 
   function handleIncreaseQuantity() {
     setCoffeeQuantity((prev) => prev + 1);
