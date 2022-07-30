@@ -4,9 +4,10 @@ import motoImg from '../../assets/moto.svg'
 import { InfoWithIcon } from "../../components/InfoWithIcon";
 import { MapPin, CurrencyDollar, Clock } from "phosphor-react";
 import { useTheme } from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { OrderData } from "../Checkout";
 import { paymentMethods } from "../Checkout/CompleteOrderForm/PaymentMethodOptions";
+import { useEffect } from "react";
 
 interface LocationType {
   state: OrderData
@@ -15,6 +16,14 @@ interface LocationType {
 export function Finished() {
 
   const { state } = useLocation() as unknown as LocationType
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!state) {
+      navigate("/")
+    }
+  }, [])
+
+  if (!state) return <></>
 
   console.log(state)
   const { colors } = useTheme()
