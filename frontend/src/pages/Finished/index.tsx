@@ -4,8 +4,19 @@ import motoImg from '../../assets/moto.svg'
 import { InfoWithIcon } from "../../components/InfoWithIcon";
 import { MapPin, CurrencyDollar, Clock } from "phosphor-react";
 import { useTheme } from "styled-components";
+import { useLocation } from "react-router-dom";
+import { OrderData } from "../Checkout";
+import { paymentMethods } from "../Checkout/CompleteOrderForm/PaymentMethodOptions";
+
+interface LocationType {
+  state: OrderData
+}
 
 export function Finished() {
+
+  const { state } = useLocation() as unknown as LocationType
+
+  console.log(state)
   const { colors } = useTheme()
   return (
     <FinishedContainer className="container">
@@ -17,13 +28,13 @@ export function Finished() {
       <section>
         <OrderDetailsContainer>
           <InfoWithIcon icon={<MapPin weight="fill" />} iconBg={colors["brand-purple"]}
-            text={<RegularText>Entrega em <strong>Rua João Daniel Martinelli, 102</strong> <br /> Farrapos - Porto Alegre, RS</RegularText>}
+            text={<RegularText>Entrega em <strong>{state.street}, {state.number}</strong> <br /> {state.neighborhood} - {state.city}, {state.uf}</RegularText>}
           />
           <InfoWithIcon icon={<Clock weight="fill" />} iconBg={colors["brand-yellow"]}
             text={<RegularText>Previsão de entrega  <br /><strong>20 min - 30 min</strong></RegularText>}
           />
           <InfoWithIcon icon={<CurrencyDollar weight="fill" />} iconBg={colors["brand-yellow-dark"]}
-            text={<RegularText><strong>Cartão de crédito</strong></RegularText>}
+            text={<RegularText><strong>{paymentMethods[state.paymentMethod].label}</strong></RegularText>}
           />
         </OrderDetailsContainer>
         <img src={motoImg} alt="" />
