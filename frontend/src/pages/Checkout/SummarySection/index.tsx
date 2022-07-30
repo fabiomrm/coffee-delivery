@@ -23,7 +23,7 @@ export function SummarySection({ subtotal, deliverFee }: SummarySectionProps) {
         <RegularText weight="700" color="subtitle" size="l">Total</RegularText>
         <RegularText weight="700" color="subtitle" size="l">R$ {currencyFormatter(subtotal + deliverFee)}</RegularText>
       </div>
-      <Button text="confirmar pedido" />
+      <Button text="confirmar pedido" type="submit" />
     </SummarySectionContainer>
   )
 }
